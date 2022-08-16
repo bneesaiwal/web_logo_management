@@ -14,16 +14,16 @@ def create_logo(alignment_file_name: str):
         logooptions = weblogo.LogoOptions()
         logooptions.logo_title = f'{alignment_file_name.split(sep="/")[-1][:-6]}'
         logoformat = weblogo.LogoFormat(logodata, logooptions)
-        svg = weblogo.svg_formatter(logodata, logoformat)
-        return svg
+        pdf = weblogo.pdf_formatter(logodata, logoformat)
+        return pdf
 
 
 def main() -> None:
     alignments = os.listdir(CLUSTER_ALIGNMENT_DIR)
     for alignment in alignments:
-        svg = create_logo(alignment)
-        with open(f'{LOGO_OUTPUT_DIR}/{alignment.split(sep="/")[-1][:-6]}_logo.svg', 'wb') as logo:
-            logo.write(svg)
+        pdf = create_logo(alignment)
+        with open(f'{LOGO_OUTPUT_DIR}/{alignment.split(sep="/")[-1][:-6]}_logo.pdf', 'wb') as logo:
+            logo.write(pdf)
     return None
 
 
