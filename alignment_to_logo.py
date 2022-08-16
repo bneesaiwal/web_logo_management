@@ -6,8 +6,9 @@ import os
 CLUSTER_ALIGNMENT_DIR = '/home/biswas.99/euk_styk_project/clusters/pro_x_pro_multiple_alignments'
 LOGO_OUTPUT_DIR = '/home/biswas.99/euk_styk_project/clusters/pro_x_pro_logos'
 
+
 def create_logo(alignment_file_name: str):
-    with open(alignment_file_name, 'r', encoding='UTF-8'):
+    with open(f'{CLUSTER_ALIGNMENT_DIR}/{alignment_file_name}', 'r', encoding='UTF-8'):
         seqs = weblogo.read_seq_data()
         logodata = weblogo.LogoData.from_seqs(seqs)
         logooptions = weblogo.LogoOptions()
